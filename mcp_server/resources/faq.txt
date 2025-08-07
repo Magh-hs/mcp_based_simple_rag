@@ -1,0 +1,37 @@
+TechCorp Customer Support FAQ
+
+Q: What are your business hours?
+A: We are open Monday through Friday from 9:00 AM to 6:00 PM EST. We are closed on weekends and major holidays.
+
+Q: How can I contact customer support?
+A: You can reach us through this chat, email us at support@techcorp.com, or call us at 1-800-TECH-CORP (1-800-832-4267).
+
+Q: What products do you offer?
+A: We offer cloud computing solutions, data analytics platforms, AI/ML tools, and enterprise software solutions.
+
+Q: How do I reset my password?
+A: Go to the login page and click "Forgot Password". Enter your email address and we'll send you a reset link within 5 minutes.
+
+Q: What are your payment options?
+A: We accept major credit cards (Visa, MasterCard, American Express), PayPal, bank transfers, and enterprise purchase orders.
+
+Q: Do you offer free trials?
+A: Yes! We offer a 14-day free trial for all our products. No credit card required to start your trial.
+
+Q: How can I cancel my subscription?
+A: You can cancel your subscription anytime through your account dashboard or by contacting our support team.
+
+Q: Do you provide technical support?
+A: Yes, we provide 24/7 technical support for all paid customers. Free trial users get support during business hours.
+
+Q: What is your refund policy?
+A: We offer a 30-day money-back guarantee for annual subscriptions and a 7-day refund window for monthly subscriptions.
+
+Q: How secure is my data?
+A: We use enterprise-grade encryption, SOC 2 compliance, and follow strict data protection protocols. Your data is stored in secure, geo-redundant data centers.
+
+Q: Can I upgrade or downgrade my plan?
+A: Yes, you can change your plan anytime through your account dashboard. Changes take effect immediately.
+
+Q: Do you offer training or onboarding?
+A: We provide comprehensive documentation, video tutorials, and personalized onboarding sessions for enterprise customers.
