@@ -1,11 +1,19 @@
 import os
 import uuid
+import logging
 from datetime import datetime
 from typing import List
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 from .database import get_async_db, create_tables
 from .models import MessageLog
@@ -37,7 +45,22 @@ app.add_middleware(
 @app.on_event("startup")
 async def startup_event():
     """Initialize database tables on startup."""
-    create_tables()
+    try:
+        logger.info("Starting up RAG Chatbot API...")
+        create_tables()
+        logger.info("Database tables created successfully")
+        
+        # Test MCP server connection
+        mcp_health = await mcp_client.health_check()
+        if mcp_health:
+            logger.info("MCP server is healthy")
+        else:
+            logger.warning("MCP server health check failed - will use fallback mode")
+        
+        logger.info("RAG Chatbot API startup completed")
+    except Exception as e:
+        logger.error(f"Startup failed: {e}")
+        raise
 
 
 @app.on_event("shutdown")
@@ -78,6 +101,7 @@ async def query_generate(request: QueryGenerateRequest):
         )
     
     except Exception as e:
+        logger.error(f"Query generation failed: {e}")
         raise HTTPException(status_code=500, detail=f"Query generation failed: {str(e)}")
 
 
@@ -103,6 +127,7 @@ async def answer_generate(request: AnswerGenerateRequest):
         )
     
     except Exception as e:
+        logger.error(f"Answer generation failed: {e}")
         raise HTTPException(status_code=500, detail=f"Answer generation failed: {str(e)}")
 
 
@@ -148,6 +173,7 @@ async def chat(request: ChatRequest, db: AsyncSession = Depends(get_async_db)):
     
     except Exception as e:
         await db.rollback()
+        logger.error(f"Chat processing failed: {e}")
         raise HTTPException(status_code=500, detail=f"Chat processing failed: {str(e)}")
 
 

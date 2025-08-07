@@ -6,8 +6,10 @@ let filteredMessages = [];
 let sortColumn = 'timestamp';
 let sortDirection = 'desc';
 
-// API base URL - change this to match your backend
-const API_BASE_URL = 'http://localhost:8000';
+// API base URL - automatically detect environment
+const API_BASE_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:8000'  // Local development
+    : `${window.location.protocol}//${window.location.host}`;  // Docker environment (proxy through nginx)
 
 // Initialize dashboard
 document.addEventListener('DOMContentLoaded', function() {
