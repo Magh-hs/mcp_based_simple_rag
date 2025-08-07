@@ -57,6 +57,13 @@ def check_directory_structure():
         ("frontend/index.html", "Dashboard HTML"),
         ("frontend/style.css", "Dashboard CSS"),
         ("frontend/script.js", "Dashboard JavaScript"),
+        
+        # Chat Interface files
+        ("chat_interface/Dockerfile", "Chat interface container config"),
+        ("chat_interface/nginx.conf", "Chat interface nginx config"),
+        ("chat_interface/index.html", "Chat interface HTML"),
+        ("chat_interface/chat.css", "Chat interface CSS"),
+        ("chat_interface/chat.js", "Chat interface JavaScript"),
     ]
     
     passed = 0
@@ -275,7 +282,8 @@ def main():
         print("   1. Copy .env.example to .env")
         print("   2. Add your OPENAI_API_KEY to .env")
         print("   3. Run: ./start.sh")
-        print("   4. Access: http://localhost:3000")
+        print("   4. Access Chat: http://localhost:3001")
+        print("   5. Access Dashboard: http://localhost:3000")
         return 0
     else:
         print("❌ VALIDATION FAILED!")
