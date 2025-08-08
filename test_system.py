@@ -193,7 +193,8 @@ async def main():
     if success_count == total_tests:
         print("🎉 All tests passed! Your RAG Chatbot system is working correctly.")
         print("\n🌐 You can now access:")
-        print("   - Frontend Dashboard: http://localhost:3000")
+        print("   - Chat Interface: http://localhost:3001")
+        print("   - Dashboard: http://localhost:3000")
         print("   - API Documentation: http://localhost:8000/docs")
         print("   - pgAdmin: http://localhost:5050")
         return 0

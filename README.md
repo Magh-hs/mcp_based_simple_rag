@@ -59,13 +59,15 @@ docker-compose up --build
 ```
 
 This will start all services:
+- **Chat Interface**: http://localhost:3001
 - **Backend API**: http://localhost:8000
-- **Frontend Dashboard**: http://localhost:3000
+- **Dashboard**: http://localhost:3000
 - **pgAdmin**: http://localhost:5050
 - **PostgreSQL**: localhost:5432
 
 ### 4. Access the Services
 
+- **Chat Interface**: http://localhost:3001
 - **API Documentation**: http://localhost:8000/docs
 - **Dashboard**: http://localhost:3000
 - **pgAdmin**: http://localhost:5050 (admin@example.com / admin)
@@ -94,6 +96,12 @@ rag-chatbot/
 │   ├── index.html        # Main HTML
 │   ├── style.css         # Styling
 │   ├── script.js         # JavaScript functionality
+│   ├── nginx.conf        # Nginx configuration
+│   └── Dockerfile
+├── chat_interface/       # Chat Interface
+│   ├── index.html        # Chat HTML
+│   ├── chat.css          # Chat styling
+│   ├── chat.js           # Chat functionality
 │   ├── nginx.conf        # Nginx configuration
 │   └── Dockerfile
 ├── docker-compose.yml    # Complete system orchestration

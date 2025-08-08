@@ -101,6 +101,20 @@ services:
     networks:
       - chatbot_network
 
+  # Chat Interface
+  chat_interface:
+    build:
+      context: ./chat_interface
+      dockerfile: Dockerfile
+    container_name: chatbot_chat_interface
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - chatbot_network
+
 volumes:
   postgres_data:
     driver: local
