@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 RAG Chatbot Dashboard</h1>
+            <p>Monitor user conversations and system performance</p>
+        </header>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <h3>Total Messages</h3>
+                <div class="stat-value" id="totalMessages">-</div>
+            </div>
+            <div class="stat-card">
+                <h3>Today's Messages</h3>
+                <div class="stat-value" id="todayMessages">-</div>
+            </div>
+            <div class="stat-card">
+                <h3>Active Conversations</h3>
+                <div class="stat-value" id="activeConversations">-</div>
+            </div>
+        </div>
+
+        <div class="controls-section">
+            <div class="search-controls">
+                <input type="text" id="searchInput" placeholder="Search messages..." />
+                <button onclick="searchMessages()">🔍 Search</button>
+                <button onclick="refreshData()">🔄 Refresh</button>
+            </div>
+            
+            <div class="filter-controls">
+                <label for="conversationFilter">Filter by Conversation ID:</label>
+                <select id="conversationFilter" onchange="applyFilters()">
+                    <option value="">All Conversations</option>
+                </select>
+                
+                <label for="dateFilter">Filter by Date:</label>
+                <input type="date" id="dateFilter" onchange="applyFilters()" />
+            </div>
+        </div>
+
+        <div class="table-section">
+            <div class="table-header">
+                <h2>Message History</h2>
+                <div class="pagination-info">
+                    Showing <span id="showingCount">0</span> messages
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table id="messagesTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable('timestamp')">Timestamp ↕️</th>
+                            <th onclick="sortTable('user_query')">User Query ↕️</th>
+                            <th onclick="sortTable('refined_query')">Refined Query ↕️</th>
+                            <th onclick="sortTable('answer')">Answer ↕️</th>
+                            <th onclick="sortTable('conversation_id')">Conversation ID ↕️</th>
+                        </tr>
+                    </thead>
+                    <tbody id="messagesTableBody">
+                        <!-- Messages will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="pagination">
+                <button id="prevButton" onclick="previousPage()" disabled>← Previous</button>
+                <span id="pageInfo">Page 1</span>
+                <button id="nextButton" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <div class="modal" id="messageModal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h3>Message Details</h3>
+                <div id="modalContent">
+                    <!-- Detailed message content will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
