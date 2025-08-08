@@ -178,6 +178,39 @@ The frontend dashboard provides:
 - **Message Details Modal**: View complete message information
 - **Responsive Design**: Works on desktop and mobile devices
 
+## 💬 Chat Interface (Port 3001)
+
+- **Access**: `http://localhost:3001`
+- **Purpose**: Simple chat UI for end-users to talk to the RAG assistant
+- **Files**: `chat_interface/index.html`, `chat_interface/chat.css`, `chat_interface/chat.js`, `chat_interface/nginx.conf`
+
+### How it connects to the backend
+- When opened on `localhost`, the UI calls the backend directly at `http://localhost:8000`
+- In non-local deployments, the chat interface calls its own host (`/health`, `/chat`, etc.) and Nginx proxies those paths to the backend
+- Nginx routes are defined as exact path matches to avoid collisions with static assets
+
+### Features
+- Send messages and receive LLM responses
+- Quick actions for common queries
+- Local conversation history sidebar
+- Export conversation as JSON
+- Open dashboard shortcut
+
+### Customize the UI
+- Edit `chat_interface/chat.css` for styling
+- Edit `chat_interface/chat.js` for behavior and API paths
+- Rebuild and restart the chat interface service:
+
+```bash
+docker-compose build chat_interface && docker-compose up -d chat_interface
+```
+
+### Troubleshooting
+- If `chat.css` or `chat.js` fail to load with a MIME type error and `X-Content-Type-Options: nosniff`:
+  - Ensure Nginx uses exact path locations for API routes (`location = /chat`, `location = /health`, etc.) so that `/chat.css` and `/chat.js` are served as static files instead of being proxied
+  - Rebuild/restart the `chat_interface` service after changes
+- Verify backend health at `http://localhost:8000/health`
+
 ## 🗄️ Database Schema
 
 ### `message_logs` Table
